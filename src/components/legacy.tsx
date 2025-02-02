@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter } from "@heroui/card";
+import { Card, CardFooter } from "@heroui/card";
 import { subtitle, title } from "./primitives";
 import { Chip } from "@heroui/chip";
 import { Image } from "@heroui/image";
