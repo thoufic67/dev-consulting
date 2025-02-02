@@ -14,8 +14,8 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
   return (
     <Card className=" max-w-xs" isFooterBlurred>
       <Image
-        alt="Woman listing to music"
-        className="object-cover"
+        alt={title}
+        className="object-cover min-w-96"
         height={300}
         src={image}
         width={300}
