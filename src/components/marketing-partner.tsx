@@ -109,11 +109,13 @@ const MarketingPartner = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-8 py-8 md:py-10 max-w-full overflow-auto scrollbar-hide ">
-        <div className="flex flex-scroll flex-start justify-start gap-8 animate-scroll">
-          {MarketingPartners.map((partner) => (
-            <MarketingPartnerCard key={partner.Mtitle} {...partner} />
-          ))}
+      <div className="w-full overflow-hidden ">
+        <div className="flex justify-center animate-scroll">
+          <div className="flex items-center  gap-16 px-4 ">
+            {MarketingPartners.map((partner) => (
+              <MarketingPartnerCard key={partner.Mtitle} {...partner} />
+            ))}
+          </div>
         </div>
       </div>
     </>

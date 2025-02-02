@@ -70,11 +70,10 @@ const CompaniesWorked = () => {
             {companies.map((company) => (
               <div className="flex flex-col items-center justify-center">
                 <Image
-                  isBlurred
                   src={company.image}
                   alt={company.name}
-                  width={240}
                   radius="none"
+                  className="h-32 min-w-32 object-contain"
                 />
               </div>
             ))}

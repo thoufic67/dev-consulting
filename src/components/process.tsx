@@ -515,7 +515,7 @@ const Process = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-full overflow-auto">
+      <div className="flex items-center justify-center gap-8 py-8 md:py-10  max-w-full overflow-auto">
         <div className="flex gap-8">
           {processes.map((process) => (
             <ProcessCard key={process.ProcessTitle} {...process} />

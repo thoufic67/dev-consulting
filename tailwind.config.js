@@ -22,11 +22,18 @@ module.exports = {
         },
       },
       animation: {
-        scrol: "scroll 40s linear infinite",
+        scroll: "scroll 40s linear infinite",
         blur: "blur .5s ease-in forwards",
       },
     },
   },
   darkMode: "class",
-  plugins: [heroui()],
+  plugins: [
+    heroui({
+      defaultTheme: "dark",
+      colors: {
+        primary: "#FF4533",
+      },
+    }),
+  ],
 };

@@ -18,14 +18,14 @@ interface LegacyCardProps {
 
 const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
   return (
-    <Card className=" max-w-xs" isFooterBlurred>
+    <Card className=" max-w-xs">
       <Image
         alt={title}
         className="object-cover min-w-96"
         src={image}
         isZoomed
       />
-      <CardFooter className="flex-col gap-2 justify-between bg-default-100/50 border-default-100/10 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+      <CardFooter className="flex-col gap-4 rounded-none justify-between shadow-none overflow-hidden py-4 absolute bottom-0 z-10 bg-gradient-to-b from-transparent to-default-100/50 text-white">
         {/* <Button
           className="text-tiny text-white bg-black/20"
           color="default"
@@ -36,7 +36,7 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
           Notify me
         </Button> */}
 
-        <p className="text-sm">{title}</p>
+        <p className="text-xl">{title}</p>
         <p className="text-xs">{subtitle}</p>
         <div className="flex gap-2">
           {chip.map((chip) => (
@@ -44,7 +44,7 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
               key={chip}
               size="sm"
               variant="bordered"
-              className="text-[10px]"
+              className="text-[10px] border-default-100/50 bg-default-100/50 text-white"
             >
               {chip}
             </Chip>
@@ -122,11 +122,13 @@ const Legacy = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-full overflow-auto scrollbar-hide">
-        <div className="flex gap-8">
-          {Legacies.map((legacy) => (
-            <LegacyCard key={legacy.title} {...legacy} />
-          ))}
+      <div className="w-full overflow-hidden ">
+        <div className="flex justify-center animate-scroll">
+          <div className="flex items-center  gap-16 px-4 ">
+            {Legacies.map((legacy) => (
+              <LegacyCard key={legacy.title} {...legacy} />
+            ))}
+          </div>
         </div>
       </div>
     </>

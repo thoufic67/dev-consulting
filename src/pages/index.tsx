@@ -14,11 +14,10 @@ import Comparision from "@/components/comparision";
 import Process from "@/components/process";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { Button } from "@heroui/button";
-
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-10 ">
+      <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-2xl text-center justify-center animate-blur">
           <span className={title()}>Is Your Digital Presence&nbsp;</span>
           <span
@@ -39,7 +38,7 @@ export default function IndexPage() {
           <Link
             isExternal
             className={buttonStyles({
-              color: "primary",
+              color: "warning",
               radius: "lg",
               variant: "shadow",
             })}
@@ -73,7 +72,7 @@ export default function IndexPage() {
         <Link
           isExternal
           className={buttonStyles({
-            color: "primary",
+            color: "warning",
             radius: "lg",
             variant: "shadow",
           })}
@@ -107,7 +106,7 @@ export default function IndexPage() {
           </span>
         </CardBody>
         <CardFooter className="flex flex-col items-center justify-center">
-          <Button variant="solid" color="primary">
+          <Button variant="solid" color="warning">
             Get your free, digital presence audit
           </Button>
         </CardFooter>

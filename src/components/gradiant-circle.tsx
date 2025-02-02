@@ -11,7 +11,7 @@ const GradiantCircle = ({
         <div
           className={`w-96 h-96 bg-gradient-to-r ${from} ${to} rounded-full`}
         >
-          <div className="w-full h-full bg-radial-gradient from-white via-white/50 to-transparent rounded-full"></div>
+          <div className="w-full h-full bg-radial-gradient from-default-100 via-default-100/50 to-transparent rounded-full"></div>
         </div>
       </div>
     </div>

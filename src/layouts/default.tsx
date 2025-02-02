@@ -1,15 +1,32 @@
 import GradiantCircle from "@/components/gradiant-circle";
 import { Navbar } from "@/components/navbar";
+import { useTheme } from "@/hooks/use-theme";
+import { useEffect } from "react";
+import TopGradient from "@/assets/background/TopGradient.png";
 
 export default function DefaultLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    console.log(setTheme);
+    if (setTheme) {
+      setTheme("dark");
+    }
+  }, [setTheme]);
+
   return (
     <div className="relative flex flex-col overflow-x-hidden  h-screen">
+      <img
+        src={TopGradient}
+        alt="Top gradient background"
+        className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover"
+      />
       <Navbar />
-      <main className="container relative mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
+      <main className=" container relative mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
         {children}
       </main>
       <footer className="w-full flex flex-col sm:flex-row items-center justify-between p-8 border-t-1 border-default-100 mt-32 ">
