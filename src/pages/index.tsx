@@ -46,7 +46,7 @@ export default function IndexPage() {
 
         <div className="h-64 overflow-hidden blur-3xl -z-10">
           <div className="w-full h-full">
-            <GradiantCircle />
+            <GradiantCircle isFullyVisible={false} />
           </div>
         </div>
       </section>

@@ -21,9 +21,12 @@ export const Navbar = () => {
       maxWidth="md"
       position="sticky"
       shouldHideOnScroll={false}
-      className="bg-default-100/50 backdrop-blur-lg w-fit mx-auto rounded-xl px-2 top-4"
+      className="bg-default-100/50 backdrop-blur-lg w-fit mx-auto rounded-xl px-2 top-4 flex"
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent
+        className="basis-1/5 sm:basis-full gap-12 "
+        justify="start"
+      >
         <NavbarBrand className="gap-3 max-w-fit">
           <Link
             className="flex justify-start items-center gap-1"
@@ -65,7 +68,7 @@ export const Navbar = () => {
             </p> */}
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+        <div className="hidden lg:flex gap-8 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <Link
@@ -81,13 +84,6 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
         </div>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         <NavbarItem className="hidden md:flex">
           <Button
             isExternal

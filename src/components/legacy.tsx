@@ -99,7 +99,7 @@ const Legacy = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-7xl">
+      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-full overflow-auto">
         <div className="flex gap-8">
           {Legacies.map((legacy) => (
             <LegacyCard key={legacy.title} {...legacy} />
