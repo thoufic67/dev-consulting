@@ -9,6 +9,11 @@ import GradiantCircle from "@/components/gradiant-circle";
 import CompaniesWorked from "@/components/companies-worked";
 import Legacy from "@/components/legacy";
 import HowWeHelp from "@/components/how-we-help";
+import MarketingPartner from "@/components/marketing-partner";
+import Comparision from "@/components/comparision";
+import Process from "@/components/process";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
+import { Button } from "@heroui/button";
 
 export default function IndexPage() {
   return (
@@ -79,6 +84,38 @@ export default function IndexPage() {
       </div>
 
       <HowWeHelp />
+
+      <MarketingPartner />
+      <Comparision />
+      <Process />
+
+      <Card
+        isBlurred
+        className="border-1 border-default-100 justify-center p-8 bg-default-100/10"
+      >
+        <CardHeader className="flex flex-col items-center justify-center text-center">
+          <div className="flex flex-col items-center justify-center  max-w-lg">
+            <span className={title({ size: "md" })}>
+              Ready to scale your brand to new heights?
+            </span>
+          </div>
+        </CardHeader>
+        <CardBody className="flex flex-col items-center justify-center text-center">
+          <span className={subtitle({ class: "max-w-lg" })}>
+            If you want to achieve ground-breaking growth with increased sales
+            and profitability, then you're in the right place.
+          </span>
+        </CardBody>
+        <CardFooter className="flex flex-col items-center justify-center">
+          <Button variant="solid" color="primary">
+            Get your free, digital presence audit
+          </Button>
+        </CardFooter>
+      </Card>
+
+      <div className="w-full absolute -bottom-[5%] left-[40%] -z-10 blur-[100px]">
+        <GradiantCircle />
+      </div>
     </DefaultLayout>
   );
 }

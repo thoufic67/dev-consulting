@@ -2,6 +2,12 @@ import { Card, CardFooter } from "@heroui/card";
 import { subtitle, title } from "./primitives";
 import { Chip } from "@heroui/chip";
 import { Image } from "@heroui/image";
+import OrbitCables from "@/assets/legacy/Orbit Cables.png";
+import HelloSwitches from "@/assets/legacy/Hello Switches.png";
+import Lynk from "@/assets/legacy/Lynk.png";
+import OrbitSwitches from "@/assets/legacy/Orbit Switches.png";
+import UnitedIndia from "@/assets/legacy/United India.png";
+import RoyalEnfield from "@/assets/legacy/Royal Enfield.png";
 
 interface LegacyCardProps {
   title: string;
@@ -16,9 +22,8 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
       <Image
         alt={title}
         className="object-cover min-w-96"
-        height={300}
         src={image}
-        width={300}
+        isZoomed
       />
       <CardFooter className="flex-col gap-2 justify-between bg-default-100/50 border-default-100/10 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
         {/* <Button
@@ -52,22 +57,40 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
 
 const Legacies = [
   {
-    title: "Hello Switches",
-    subtitle: "100+ localities reached",
-    image: "https://heroui.com/images/hero-card.jpeg",
-    chip: ["Showcased at 200% dealer locations"],
-  },
-  {
     title: "Orbit Cables",
     subtitle: "40% brand recall uplift",
-    image: "https://picsum.photos/200/300",
-    chip: ["50+ Routes Across Mumbai"],
+    image: OrbitCables,
+    chip: ["20 Buses Branded", "50+ Routes Across Mumbai"],
+  },
+  {
+    title: "Hello Switches",
+    subtitle: "100+ localities reached",
+    image: HelloSwitches,
+    chip: ["Showcased at 200+ Dealer Locations"],
   },
   {
     title: "Lynk",
     subtitle: "20% Increase in Calls",
-    image: "https://picsum.photos/200/200",
+    image: Lynk,
     chip: ["250+ Autos in Chennai", "35% Brand Recall"],
+  },
+  {
+    title: "Orbit Switches",
+    subtitle: "Collaboration with Kodaikanal Police Dept.",
+    image: OrbitSwitches,
+    chip: ["40%+ uplift in local brand recognition"],
+  },
+  {
+    title: "United India Insurance",
+    subtitle: "25% Increase in Walk-In Inquiries",
+    image: UnitedIndia,
+    chip: ["20% Boost in Local Brand Awareness"],
+  },
+  {
+    title: "Royal Enfield",
+    subtitle: "30% Increase in Social Media Mentions",
+    image: RoyalEnfield,
+    chip: ["15% Increase in Test Rides", "40K+ Daily Impressions"],
   },
 ];
 const Legacy = () => {
@@ -99,7 +122,7 @@ const Legacy = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-full overflow-auto">
+      <div className="flex items-center justify-center gap-8 py-8 md:py-10 animate-scroll max-w-full overflow-auto scrollbar-hide">
         <div className="flex gap-8">
           {Legacies.map((legacy) => (
             <LegacyCard key={legacy.title} {...legacy} />

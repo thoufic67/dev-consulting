@@ -7,14 +7,11 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative flex flex-col overflow-x-hidden ">
+    <div className="relative flex flex-col overflow-x-hidden  h-screen">
       <Navbar />
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
+      <main className="container relative mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
         {children}
       </main>
-      <div className="w-full absolute bottom-0 left-[40%] -z-10 blur-[100px]">
-        <GradiantCircle />
-      </div>
       <footer className="w-full flex flex-col sm:flex-row items-center justify-between p-8 border-t-1 border-default-100 mt-32 ">
         <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
           <svg
@@ -24,7 +21,7 @@ export default function DefaultLayout({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            className="w-32 h-32"
+            className="bg-default-100/50 backdrop-blur-xl rounded-lg w-32 h-32"
           >
             <rect width="219" height="169" fill="url(#pattern0_25_4289)" />
             <defs>
