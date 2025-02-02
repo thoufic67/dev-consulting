@@ -1,4 +1,3 @@
-import GradiantCircle from "@/components/gradiant-circle";
 import { Navbar } from "@/components/navbar";
 import { useTheme } from "@/hooks/use-theme";
 import { useEffect } from "react";
@@ -23,13 +22,13 @@ export default function DefaultLayout({
       <img
         src={TopGradient}
         alt="Top gradient background"
-        className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover"
+        className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover blur-sm"
       />
       <Navbar />
       <main className=" container relative mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
         {children}
       </main>
-      <footer className="w-full flex flex-col sm:flex-row items-center justify-between p-8 border-t-1 border-default-100 mt-32 ">
+      <footer className="w-full flex flex-col sm:flex-row items-center justify-between p-8 border-t-1 border-default-100 mt-32 gap-8 ">
         <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
           <svg
             width="219"

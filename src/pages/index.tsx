@@ -17,7 +17,7 @@ import { Button } from "@heroui/button";
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-72">
         <div className="inline-block max-w-2xl text-center justify-center animate-blur">
           <span className={title()}>Is Your Digital Presence&nbsp;</span>
           <span
@@ -48,11 +48,11 @@ export default function IndexPage() {
           </Link>
         </div>
 
-        <div className="h-64 overflow-hidden blur-3xl -z-10">
+        {/* <div className="h-64 overflow-hidden blur-3xl -z-10">
           <div className="w-full h-full">
             <GradiantCircle isFullyVisible={false} />
           </div>
-        </div>
+        </div> */}
       </section>
 
       <CompaniesWorked />
@@ -106,7 +106,13 @@ export default function IndexPage() {
           </span>
         </CardBody>
         <CardFooter className="flex flex-col items-center justify-center">
-          <Button variant="solid" color="warning">
+          <Button
+            as={Link}
+            isExternal
+            href={siteConfig.links.docs}
+            variant="solid"
+            color="warning"
+          >
             Get your free, digital presence audit
           </Button>
         </CardFooter>

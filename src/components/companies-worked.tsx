@@ -65,8 +65,8 @@ const CompaniesWorked = () => {
         Trusted by Leading Brands
       </Chip>
       <div className="w-full overflow-hidden ">
-        <div className="flex justify-center animate-scroll">
-          <div className="flex items-center  gap-16 px-4 ">
+        <div className="flex justify-center animate-fast-scroll sm:animate-scroll hover:animate-none focus-within:animate-none focus-within:overflow-x-auto">
+          <div className="flex items-center gap-16 px-[calc(50vw-192px)]">
             {companies.map((company) => (
               <div className="flex flex-col items-center justify-center">
                 <Image

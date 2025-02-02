@@ -123,8 +123,8 @@ const Legacy = () => {
         </div>
       </div>
       <div className="w-full overflow-hidden ">
-        <div className="flex justify-center animate-scroll">
-          <div className="flex items-center  gap-16 px-4 ">
+        <div className="flex justify-center animate-fast-scroll sm:animate-scroll hover:animate-none focus-within:animate-none focus-within:overflow-x-auto">
+          <div className="flex items-center gap-16 px-4">
             {Legacies.map((legacy) => (
               <LegacyCard key={legacy.title} {...legacy} />
             ))}

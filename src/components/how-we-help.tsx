@@ -26,7 +26,9 @@ const HowWeHelp = () => {
         <Card className="col-span-1 p-8 border-1 border-default-300/50 ">
           <div className=" absolute -top-10 -left-10 w-40 h-40 blur-[100px] rounded-full  bg-gradient-to-br from-purple-600 to-cyan-500 text-white p-8" />
           <CardHeader className="pb-2 justify-center items-center">
-            <h2 className="text-3xl font-bold">Outdoor Advertising</h2>
+            <h2 className="text-3xl font-bold text-center">
+              Outdoor Advertising
+            </h2>
           </CardHeader>
           <CardBody>
             <p className="text-default-500 text-center">
@@ -41,7 +43,9 @@ const HowWeHelp = () => {
         <Card className="col-span-1 p-8  border-1 border-default-300/50 ">
           <div className=" absolute -top-10 -right-10 w-40 h-40 blur-[100px] rounded-full  bg-gradient-to-br from-red-600 to-green-600 text-white p-8" />
           <CardHeader className="pb-2 justify-center items-center">
-            <h2 className="text-3xl font-bold">Paid Advertising</h2>
+            <h2 className="text-3xl font-bold text-center ">
+              Paid Advertising
+            </h2>
           </CardHeader>
           <CardBody>
             <p className="text-default-500 text-center">
@@ -59,7 +63,7 @@ const HowWeHelp = () => {
           <div className=" absolute -bottom-10 -left-10 w-40 h-40 blur-[100px] rounded-full  bg-gradient-to-br from-red-600 to-green-600 text-white p-8" />
 
           <CardHeader className="pb-2 justify-center items-center   ">
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-3xl font-bold text-center">
               Digital Presence Optimization
             </h2>
           </CardHeader>

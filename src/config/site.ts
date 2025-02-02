@@ -64,6 +64,6 @@ export const siteConfig = {
     },
   ],
   links: {
-    docs: "https://google.com/docs",
+    docs: "https://docs.google.com/forms/d/e/1FAIpQLSexILmRGIqDISDLm7Mc9OOljgJh2bG99qnwEQuaDLdcYfIPcw/viewform?usp=header",
   },
 };

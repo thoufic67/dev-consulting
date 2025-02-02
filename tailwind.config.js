@@ -13,8 +13,8 @@ module.exports = {
     extend: {
       keyframes: {
         scroll: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(calc(-50%))" },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(calc(-90%))" },
         },
         blur: {
           "0%": { filter: "blur(100px)" },
@@ -23,6 +23,7 @@ module.exports = {
       },
       animation: {
         scroll: "scroll 40s linear infinite",
+        "fast-scroll": "scroll 10s linear infinite ",
         blur: "blur .5s ease-in forwards",
       },
     },
