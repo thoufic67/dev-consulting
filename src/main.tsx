@@ -5,12 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { Provider } from "./provider.tsx";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider theme="dark">
+      <Provider>
         <App />
+        {import.meta.env.PROD && <Analytics />}
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
