@@ -35,6 +35,7 @@ export const Navbar = () => {
             href="/"
           >
             <Image
+              loading="lazy"
               src={TheLinkPublicityBrandLogo}
               alt="The Link Publicity Brand Logo"
               className="w-96 sm:w-48 rounded-lg p-1 border-box"

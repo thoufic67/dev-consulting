@@ -1,19 +1,23 @@
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
+import { Suspense, lazy } from "react";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 
 import DefaultLayout from "@/layouts/default";
-import GradiantCircle from "@/components/gradiant-circle";
-import CompaniesWorked from "@/components/companies-worked";
-import Legacy from "@/components/legacy";
-import HowWeHelp from "@/components/how-we-help";
-import MarketingPartner from "@/components/marketing-partner";
-import Comparision from "@/components/comparision";
-import Process from "@/components/process";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { Button } from "@heroui/button";
+import GradiantCircle from "@/components/gradiant-circle";
+
+// Lazy load components
+const CompaniesWorked = lazy(() => import("@/components/companies-worked"));
+const Legacy = lazy(() => import("@/components/legacy"));
+const HowWeHelp = lazy(() => import("@/components/how-we-help"));
+const MarketingPartner = lazy(() => import("@/components/marketing-partner"));
+const Comparision = lazy(() => import("@/components/comparision"));
+const Process = lazy(() => import("@/components/process"));
+
 export default function IndexPage() {
   return (
     <DefaultLayout>
@@ -55,38 +59,37 @@ export default function IndexPage() {
         </div> */}
       </section>
 
-      <CompaniesWorked />
-      <Legacy />
-
-      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
-        <div className="inline-block max-w-4xl text-center justify-center animate-blur">
-          <span className={title({ size: "xs", italic: true, bold: false })}>
-            At The Link Publicity, we focus on delivering real results.
-          </span>
-          <span className={title({ size: "xs" })}>
-            Our goal is simple - to help your brand grow through effective
-            digital marketing. From paid ads to social media, we make sure your
-            brand gets noticed and reaches its full potential
-          </span>
+      <Suspense fallback={<div className="min-h-[400px]" />}>
+        <CompaniesWorked />
+        <Legacy />
+        <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
+          <div className="inline-block max-w-4xl text-center justify-center animate-blur">
+            <span className={title({ size: "xs", italic: true, bold: false })}>
+              At The Link Publicity, we focus on delivering real results.
+            </span>
+            <span className={title({ size: "xs" })}>
+              Our goal is simple - to help your brand grow through effective
+              digital marketing. From paid ads to social media, we make sure
+              your brand gets noticed and reaches its full potential
+            </span>
+          </div>
+          <Link
+            isExternal
+            className={buttonStyles({
+              color: "warning",
+              radius: "lg",
+              variant: "shadow",
+            })}
+            href={siteConfig.links.docs}
+          >
+            Get your free, digital presence audit
+          </Link>
         </div>
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "warning",
-            radius: "lg",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Get your free, digital presence audit
-        </Link>
-      </div>
-
-      <HowWeHelp />
-
-      <MarketingPartner />
-      <Comparision />
-      <Process />
+        <HowWeHelp />
+        <MarketingPartner />
+        <Comparision />
+        <Process />
+      </Suspense>
 
       <Card
         isBlurred

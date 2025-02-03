@@ -20,6 +20,7 @@ export default function DefaultLayout({
   return (
     <div className="relative flex flex-col overflow-x-hidden  h-screen">
       <img
+        loading="lazy"
         src={TopGradient}
         alt="Top gradient background"
         className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover blur-sm"

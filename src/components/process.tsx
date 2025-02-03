@@ -499,14 +499,14 @@ const Process = () => {
           <span
             className={title({
               size: "md",
-              color: "violet",
+              color: "yellow",
               italic: true,
               bold: false,
             })}
           >
             skyrocket &nbsp;
           </span>
-          <br />
+
           <span className={title({ size: "md" })}>your business.</span>
           <div className={subtitle({ class: "mt-4" })}>
             We simplify growth with a tailored process that helps your brand

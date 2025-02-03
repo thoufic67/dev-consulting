@@ -8,6 +8,8 @@ import Lynk from "@/assets/legacy/Lynk.png";
 import OrbitSwitches from "@/assets/legacy/Orbit Switches.png";
 import UnitedIndia from "@/assets/legacy/United India.png";
 import RoyalEnfield from "@/assets/legacy/Royal Enfield.png";
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 interface LegacyCardProps {
   title: string;
@@ -20,6 +22,7 @@ const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
   return (
     <Card className=" max-w-xs">
       <Image
+        loading="lazy"
         alt={title}
         className="object-cover min-w-96"
         src={image}
@@ -94,6 +97,12 @@ const Legacies = [
   },
 ];
 const Legacy = () => {
+  const isMobile = useMemo(() => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }, []);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -101,20 +110,19 @@ const Legacy = () => {
           Our Legacy
         </Chip>
         <div className="inline-block max-w-2xl text-center justify-center animate-blur">
-          <span className={title({ size: "md" })}>
-            30+ Years of Outdoor Impact, Now Driving&nbsp;
-          </span>
           <span
             className={title({
               size: "md",
-              color: "violet",
+              color: "yellow",
               italic: true,
               bold: false,
             })}
           >
-            Digital&nbsp;
+            30+ Years&nbsp;
           </span>
-          <br />
+          <span className={title({ size: "md" })}>
+            of Outdoor Impact, Now Driving Digial&nbsp;
+          </span>
           <span className={title({ size: "md" })}>success</span>
           <div className={subtitle({ class: "mt-4" })}>
             From streets to screens, we've built brand visibility for 30+ years.
@@ -122,14 +130,25 @@ const Legacy = () => {
           </div>
         </div>
       </div>
-      <div className="w-full overflow-hidden ">
-        <div className="flex justify-center animate-fast-scroll sm:animate-scroll hover:animate-none focus-within:animate-none focus-within:overflow-x-auto">
+      <div className="w-full overflow-hidden">
+        <motion.div
+          initial={{ x: "-100%" }}
+          whileInView={{ x: "0%" }}
+          transition={{
+            duration: isMobile ? 10 : 20,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop",
+          }}
+          viewport={{ once: false, amount: "some" }}
+          className="flex justify-center "
+        >
           <div className="flex items-center gap-16 px-4">
             {Legacies.map((legacy) => (
               <LegacyCard key={legacy.title} {...legacy} />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

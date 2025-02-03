@@ -70,6 +70,7 @@ const CompaniesWorked = () => {
             {companies.map((company) => (
               <div className="flex flex-col items-center justify-center">
                 <Image
+                  loading="lazy"
                   src={company.image}
                   alt={company.name}
                   radius="none"

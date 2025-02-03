@@ -1,47 +1,68 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense, useMemo } from "react";
+import debounce from "lodash/debounce";
 
-import IndexPage from "@/pages/index";
-import DocsPage from "@/pages/docs";
-import PricingPage from "@/pages/pricing";
-import BlogPage from "@/pages/blog";
-import AboutPage from "@/pages/about";
+// Replace static imports with lazy imports
+const IndexPageLazy = lazy(() => import("@/pages/index"));
+const DocsPageLazy = lazy(() => import("@/pages/docs"));
+const PricingPageLazy = lazy(() => import("@/pages/pricing"));
+const BlogPageLazy = lazy(() => import("@/pages/blog"));
+const AboutPageLazy = lazy(() => import("@/pages/about"));
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const isMobile = useMemo(() => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+    const handlePointerMove = debounce((e: MouseEvent | TouchEvent) => {
+      const x =
+        "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const y =
+        "touches" in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
+      setMousePosition({ x, y });
+    }, 5); // Reduced from 10ms to 5ms for better responsiveness
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handlePointerMove);
+    window.addEventListener("touchmove", handlePointerMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handlePointerMove);
+      window.removeEventListener("touchmove", handlePointerMove);
+      handlePointerMove.cancel(); // Clean up debounce
+    };
   }, []);
 
   return (
     <>
-      <div
-        style={{
-          position: "fixed",
-          width: "20px",
-          height: "20px",
-          borderRadius: "50%",
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
-          backdropFilter: "blur(10px)",
-          pointerEvents: "none",
-          transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)`,
-          transition: "transform 0.1s ease-out",
-          zIndex: 9999,
-        }}
-      />
-      <Routes>
-        <Route element={<IndexPage />} path="/" />
-        <Route element={<DocsPage />} path="/docs" />
-        <Route element={<PricingPage />} path="/pricing" />
-        <Route element={<BlogPage />} path="/blog" />
-        <Route element={<AboutPage />} path="/about" />
-      </Routes>
+      {!isMobile && (
+        <div
+          style={{
+            position: "fixed",
+            width: "20px",
+            height: "20px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            backdropFilter: "blur(10px)",
+            pointerEvents: "none",
+            transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)`,
+            transition: "transform 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+            zIndex: 9999,
+          }}
+        />
+      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route element={<IndexPageLazy />} path="/" />
+          <Route element={<DocsPageLazy />} path="/docs" />
+          <Route element={<PricingPageLazy />} path="/pricing" />
+          <Route element={<BlogPageLazy />} path="/blog" />
+          <Route element={<AboutPageLazy />} path="/about" />
+        </Routes>
+      </Suspense>
     </>
   );
 }

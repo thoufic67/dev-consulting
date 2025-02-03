@@ -92,7 +92,7 @@ const MarketingPartner = () => {
           <span
             className={title({
               size: "md",
-              color: "violet",
+              color: "yellow",
               italic: true,
               bold: false,
             })}
