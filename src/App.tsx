@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense, useMemo } from "react";
 import debounce from "lodash/debounce";
+import { CircularProgress } from "@heroui/progress";
 
 // Replace static imports with lazy imports
 const IndexPageLazy = lazy(() => import("@/pages/index"));
@@ -54,7 +55,14 @@ function App() {
           }}
         />
       )}
-      <Suspense fallback={<div>Loading...</div>}>
+
+      <Suspense
+        fallback={
+          <div className="w-full h-screen text-white flex justify-center items-center">
+            <CircularProgress size="lg" color="warning" strokeWidth={6} />
+          </div>
+        }
+      >
         <Routes>
           <Route element={<IndexPageLazy />} path="/" />
           <Route element={<DocsPageLazy />} path="/docs" />
