@@ -4,9 +4,25 @@ export const siteConfig = {
   name: "Vite + HeroUI",
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
+    // {
+    //   label: "Home",
+    //   href: "/",
+    // },
     {
-      label: "Home",
-      href: "/",
+      label: "About",
+      href: "#about",
+    },
+    {
+      label: "Services",
+      href: "#help",
+    },
+    {
+      label: "Comparison",
+      href: "#comparison",
+    },
+    {
+      label: "Process",
+      href: "#process",
     },
     // {
     //   label: "Docs",
@@ -20,14 +36,6 @@ export const siteConfig = {
     //   label: "Blog",
     //   href: "/blog",
     // },
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Services",
-      href: "/services",
-    },
   ],
   navMenuItems: [
     {

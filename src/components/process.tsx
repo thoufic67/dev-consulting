@@ -25,7 +25,7 @@ const ProcessCard = ({
   );
 };
 
-const Process = () => {
+const Process = ({ id }: { id?: string }) => {
   // Add the process data
   const processes = [
     {
@@ -487,7 +487,7 @@ const Process = () => {
   ];
 
   return (
-    <>
+    <section id={id}>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <Chip variant="bordered" size="sm">
           Process
@@ -522,7 +522,7 @@ const Process = () => {
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

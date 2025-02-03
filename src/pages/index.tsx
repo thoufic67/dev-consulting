@@ -1,6 +1,6 @@
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useRef } from "react";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -9,6 +9,7 @@ import DefaultLayout from "@/layouts/default";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { Button } from "@heroui/button";
 import GradiantCircle from "@/components/gradiant-circle";
+import { useLocation } from "react-router-dom";
 
 // Lazy load components
 const CompaniesWorked = lazy(() => import("@/components/companies-worked"));
@@ -19,9 +20,35 @@ const Comparision = lazy(() => import("@/components/comparision"));
 const Process = lazy(() => import("@/components/process"));
 
 export default function IndexPage() {
+  const locationHash = useLocation().hash;
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const validSections = [
+      "comparison",
+      "about",
+      "companies",
+      "help",
+      "process",
+    ];
+    const hash = locationHash.replace("#", "");
+
+    if (validSections.includes(hash)) {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (hash === "") {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [locationHash]);
+
   return (
     <DefaultLayout>
-      <section className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-72">
+      <section
+        className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-72"
+        ref={sectionRef}
+      >
         <div className="inline-block max-w-2xl text-center justify-center animate-blur">
           <span className={title()}>Is Your Digital Presence&nbsp;</span>
           <span
@@ -61,7 +88,7 @@ export default function IndexPage() {
 
       <Suspense fallback={<div className="min-h-[400px]" />}>
         <CompaniesWorked />
-        <Legacy />
+        <Legacy id="about" />
         <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
           <div className="inline-block max-w-4xl text-center justify-center animate-blur">
             <span className={title({ size: "xs", italic: true, bold: false })}>
@@ -85,10 +112,10 @@ export default function IndexPage() {
             Get your free, digital presence audit
           </Link>
         </div>
-        <HowWeHelp />
+        <HowWeHelp id="help" />
         <MarketingPartner />
-        <Comparision />
-        <Process />
+        <Comparision id="comparison" />
+        <Process id="process" />
       </Suspense>
 
       <Card

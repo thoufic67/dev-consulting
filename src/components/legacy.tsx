@@ -16,11 +16,12 @@ interface LegacyCardProps {
   subtitle: string;
   image: string;
   chip: string[];
+  id?: string;
 }
 
-const LegacyCard = ({ title, subtitle, image, chip }: LegacyCardProps) => {
+const LegacyCard = ({ title, subtitle, image, chip, id }: LegacyCardProps) => {
   return (
-    <Card className=" max-w-xs">
+    <Card className=" max-w-xs" id={id}>
       <Image
         loading="lazy"
         alt={title}
@@ -96,7 +97,12 @@ const Legacies = [
     chip: ["15% Increase in Test Rides", "40K+ Daily Impressions"],
   },
 ];
-const Legacy = () => {
+
+interface LegacyProps {
+  id?: string;
+}
+
+const Legacy = ({ id }: LegacyProps) => {
   const isMobile = useMemo(() => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -104,7 +110,7 @@ const Legacy = () => {
   }, []);
 
   return (
-    <>
+    <section id={id}>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <Chip variant="bordered" size="sm">
           Our Legacy
@@ -150,7 +156,7 @@ const Legacy = () => {
           </div>
         </motion.div>
       </div>
-    </>
+    </section>
   );
 };
 
