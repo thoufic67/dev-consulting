@@ -20,6 +20,7 @@ const MarketingPartnerCard = ({
     >
       <CardHeader className="flex flex-col items-center justify-center">
         <iframe
+          loading="lazy"
           className="rounded-lg overflow-hidden"
           width="100%"
           height="100%"
