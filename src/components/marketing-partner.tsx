@@ -25,6 +25,7 @@ const MarketingPartnerCard = ({
           width="100%"
           height="100%"
           src={src}
+          title={Mtitle}
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
