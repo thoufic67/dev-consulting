@@ -10,6 +10,9 @@ import UnitedIndia from "@/assets/legacy/United India.png";
 import RoyalEnfield from "@/assets/legacy/Royal Enfield.png";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import { siteConfig } from "@/config/site";
+import { Link } from "@heroui/link";
+import { button as buttonStyles } from "@heroui/theme";
 
 interface LegacyCardProps {
   title: string;
@@ -155,6 +158,29 @@ const Legacy = ({ id }: LegacyProps) => {
             ))}
           </div>
         </motion.div>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
+        <div className="inline-block max-w-4xl text-center justify-center animate-blur">
+          <span className={title({ size: "xs", italic: true, bold: false })}>
+            At The Link Publicity, we focus on delivering real results.
+          </span>
+          <span className={title({ size: "xs" })}>
+            Our goal is simple - to help your brand grow through effective
+            digital marketing. From paid ads to social media, we make sure your
+            brand gets noticed and reaches its full potential
+          </span>
+        </div>
+        <Link
+          isExternal
+          className={buttonStyles({
+            color: "warning",
+            radius: "lg",
+            variant: "shadow",
+          })}
+          href={siteConfig.links.docs}
+        >
+          Get your free, digital presence audit
+        </Link>
       </div>
     </section>
   );

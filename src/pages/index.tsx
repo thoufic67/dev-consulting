@@ -89,29 +89,6 @@ export default function IndexPage() {
       <Suspense fallback={<div className="min-h-[400px]" />}>
         <CompaniesWorked />
         <Legacy id="about" />
-        <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
-          <div className="inline-block max-w-4xl text-center justify-center animate-blur">
-            <span className={title({ size: "xs", italic: true, bold: false })}>
-              At The Link Publicity, we focus on delivering real results.
-            </span>
-            <span className={title({ size: "xs" })}>
-              Our goal is simple - to help your brand grow through effective
-              digital marketing. From paid ads to social media, we make sure
-              your brand gets noticed and reaches its full potential
-            </span>
-          </div>
-          <Link
-            isExternal
-            className={buttonStyles({
-              color: "warning",
-              radius: "lg",
-              variant: "shadow",
-            })}
-            href={siteConfig.links.docs}
-          >
-            Get your free, digital presence audit
-          </Link>
-        </div>
         <HowWeHelp id="help" />
         <MarketingPartner />
         <Comparision id="comparison" />
