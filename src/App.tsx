@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState, lazy, Suspense, useMemo } from "react";
-import debounce from "lodash/debounce";
 import { CircularProgress } from "@heroui/progress";
 
 // Replace static imports with lazy imports
@@ -19,13 +18,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handlePointerMove = debounce((e: MouseEvent | TouchEvent) => {
+    const handlePointerMove = (e: MouseEvent | TouchEvent) => {
       const x =
         "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
       const y =
         "touches" in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
       setMousePosition({ x, y });
-    }, 5); // Reduced from 10ms to 5ms for better responsiveness
+    };
 
     window.addEventListener("mousemove", handlePointerMove);
     window.addEventListener("touchmove", handlePointerMove);
@@ -33,7 +32,6 @@ function App() {
     return () => {
       window.removeEventListener("mousemove", handlePointerMove);
       window.removeEventListener("touchmove", handlePointerMove);
-      handlePointerMove.cancel(); // Clean up debounce
     };
   }, []);
 
@@ -43,14 +41,14 @@ function App() {
         <div
           style={{
             position: "fixed",
-            width: "20px",
-            height: "20px",
+            width: "15px",
+            height: "15px",
             borderRadius: "50%",
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            backgroundColor: "rgb(255, 69, 51)",
             backdropFilter: "blur(10px)",
             pointerEvents: "none",
             transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)`,
-            transition: "transform 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+            transition: "transform 0.1s linear",
             zIndex: 9999,
           }}
         />

@@ -2,6 +2,7 @@ import { subtitle } from "./primitives";
 
 import { Chip } from "@heroui/chip";
 import { title } from "./primitives";
+import BlurDiv from "./blur-div";
 
 // Add this interface above the Process component
 interface ProcessCard {
@@ -36,7 +37,7 @@ const Process = ({ id }: { id?: string }) => {
           width="430"
           height="430"
           preserveAspectRatio="xMidYMid slice"
-          className="bg-default-100/50 backdrop-blur-xl rounded-lg w-24 h-24"
+          className=" backdrop-blur-xl rounded-lg w-16 h-16"
         >
           <defs>
             <clipPath id="__lottie_element_2">
@@ -226,7 +227,7 @@ const Process = ({ id }: { id?: string }) => {
           width="430"
           height="430"
           preserveAspectRatio="xMidYMid slice"
-          className="bg-default-100/50 backdrop-blur-xl rounded-lg w-24 h-24"
+          className=" backdrop-blur-xl rounded-lg w-16 h-16"
         >
           <defs>
             <clipPath id="__lottie_element_22">
@@ -357,7 +358,7 @@ const Process = ({ id }: { id?: string }) => {
           width="430"
           height="430"
           preserveAspectRatio="xMidYMid slice"
-          className="bg-default-100/50 backdrop-blur-xl rounded-lg w-24 h-24"
+          className=" backdrop-blur-xl rounded-lg w-16 h-16"
         >
           <defs>
             <clipPath id="__lottie_element_35">
@@ -489,10 +490,10 @@ const Process = ({ id }: { id?: string }) => {
   return (
     <section id={id}>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <Chip variant="bordered" size="sm">
+        <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Process
-        </Chip>
-        <div className="inline-block max-w-2xl text-center justify-center animate-blur">
+        </div>
+        <BlurDiv className="inline-block max-w-2xl text-center justify-center">
           <span className={title({ size: "md" })}>
             Our simple 3-step process to &nbsp;
           </span>
@@ -513,7 +514,7 @@ const Process = ({ id }: { id?: string }) => {
             stand out and achieve real results. From analysis to execution, we
             ensure your business reaches its full potential.
           </div>
-        </div>
+        </BlurDiv>
       </div>
       <div className="flex  items-center justify-center gap-8 py-8 md:py-10  max-w-full overflow-auto">
         <div className="flex flex-col sm:flex-row gap-8">

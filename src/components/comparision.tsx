@@ -3,7 +3,7 @@ import { title } from "./primitives";
 import GradiantCircle from "./gradiant-circle";
 import LinkPublicityLogo from "@/assets/Link publicity comparision.png";
 import { Image } from "@heroui/image";
-
+import BlurDiv from "./blur-div";
 interface ComparisionProps {
   id?: string;
 }
@@ -29,12 +29,13 @@ const Comparision = ({ id }: ComparisionProps) => {
   return (
     <section id={id}>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <Chip variant="bordered" size="sm">
-          Comparision
-        </Chip>
-        <div className="inline-block max-w-2xl text-center justify-center animate-blur">
+        <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
+          Comparison
+        </div>
+        <BlurDiv className="inline-block max-w-2xl text-center justify-center">
           <span className={title({ size: "md" })}>
-            But, why would you want to &nbsp;
+            But, why would you <br />
+            want to
           </span>
           <span
             className={title({
@@ -44,16 +45,16 @@ const Comparision = ({ id }: ComparisionProps) => {
               bold: false,
             })}
           >
-            work with us?&nbsp;
+            &nbsp;work with us?&nbsp;
           </span>
-        </div>
+        </BlurDiv>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 px-6 py-8 md:py-10">
         <div className="items-center justify-center text-center">
           <h3 className="text-2xl text-default-500/60 mb-6 p-5">
             Other Agencies
           </h3>
-          <div className="rounded-3xl p-8 border-1 border-default-500/60 w-fit">
+          <div className="rounded-3xl w-[20rem] md:w-[27rem] p-8 border-1 border-default-500/60">
             {ComparisonData.otherAgencies.map((item) => (
               <div key={item} className="flex items-center gap-3 mb-4">
                 <svg
@@ -83,10 +84,9 @@ const Comparision = ({ id }: ComparisionProps) => {
               alt="Link Publicity Logo"
               width={268}
               height={70}
-              className="bg-default-100/50 rounded-lg"
             />
           </div>
-          <div className="relative w-fit rounded-3xl p-8 border-1 border-default-500/50 overflow-hidden">
+          <div className="relative w-[20rem] md:w-[27rem] rounded-3xl p-8 border-1 border-default-500/50 overflow-hidden">
             <div className="absolute -top-[80%] -right-[80%] w-fit h-fit -z-10 blur-3xl">
               <div className="w-full h-full">
                 <GradiantCircle isFullyVisible={true} />

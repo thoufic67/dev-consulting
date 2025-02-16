@@ -18,7 +18,7 @@ import { Image } from "@heroui/image";
 export const Navbar = () => {
   return (
     <HeroUINavbar
-      maxWidth="md"
+      maxWidth="lg"
       position="sticky"
       shouldHideOnScroll={false}
       className="bg-default-100/50 backdrop-blur-lg w-fit mx-auto rounded-xl px-2 top-4 flex"
@@ -27,7 +27,7 @@ export const Navbar = () => {
         className="basis-1/5 sm:basis-full gap-12 "
         justify="start"
       >
-        <NavbarBrand className="gap-3 max-w-fit">
+        <NavbarBrand className="max">
           <Link
             className="flex justify-start items-center gap-1"
             color="foreground"
@@ -45,7 +45,7 @@ export const Navbar = () => {
             </p> */}
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-8 justify-start ml-2">
+        <div className="hidden lg:flex gap-6 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <Link
@@ -68,9 +68,9 @@ export const Navbar = () => {
             size="sm"
             href={siteConfig.links.docs}
             variant="solid"
-            color="warning"
+            className="bg-[#FF4533] text-white text-sm"
           >
-            Book a call
+            Contact us
           </Button>
         </NavbarItem>
       </NavbarContent>

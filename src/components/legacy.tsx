@@ -9,10 +9,14 @@ import OrbitSwitches from "@/assets/legacy/Orbit Switches.png";
 import UnitedIndia from "@/assets/legacy/United India.png";
 import RoyalEnfield from "@/assets/legacy/Royal Enfield.png";
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { siteConfig } from "@/config/site";
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
+import { Button } from "@heroui/button";
+import RightArrow from "@/assets/icons/RightArrow.png";
+import RightChevron from "@/assets/icons/RightChevron.png";
+import BlurDiv from "./blur-div";
 
 interface LegacyCardProps {
   title: string;
@@ -24,13 +28,22 @@ interface LegacyCardProps {
 
 const LegacyCard = ({ title, subtitle, image, chip, id }: LegacyCardProps) => {
   return (
-    <Card className=" max-w-xs" id={id}>
-      <Image
+    <Card
+      className="min-w-72 md:min-w-96 max-w-96 scroll-snap-start border-1 border-default-500/60"
+      id={id}
+      data-card-position={
+        title === "Orbit Cables"
+          ? "first"
+          : title === "Royal Enfield"
+            ? "last"
+            : "middle"
+      }
+    >
+      <img
         loading="lazy"
         alt={title}
-        className="object-cover min-w-96"
+        className="object-cover min-w-96 rounded-none"
         src={image}
-        isZoomed
       />
       <CardFooter className="flex-col gap-4 rounded-none justify-between shadow-none overflow-hidden py-4 absolute bottom-0 z-10 bg-gradient-to-b from-transparent to-default-100/50 text-white">
         {/* <Button
@@ -44,14 +57,14 @@ const LegacyCard = ({ title, subtitle, image, chip, id }: LegacyCardProps) => {
         </Button> */}
 
         <p className="text-xl">{title}</p>
-        <p className="text-xs">{subtitle}</p>
+        <p className="text-sm">{subtitle}</p>
         <div className="flex gap-2">
           {chip.map((chip) => (
             <Chip
               key={chip}
               size="sm"
               variant="bordered"
-              className="text-[10px] border-default-100/50 bg-default-100/50 text-white"
+              className="text-xs border-default-100/50 bg-default-100/50 text-white"
             >
               {chip}
             </Chip>
@@ -106,6 +119,41 @@ interface LegacyProps {
 }
 
 const Legacy = ({ id }: LegacyProps) => {
+  const [showLeftGradient, setShowLeftGradient] = useState(false);
+  const [showRightGradient, setShowRightGradient] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const options = {
+      root: scrollContainerRef.current,
+      threshold: 1.0, // 100% visibility required
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const position = (entry.target as HTMLElement).dataset.cardPosition;
+
+        if (position === "first") {
+          setShowLeftGradient(!entry.isIntersecting);
+        } else if (position === "last") {
+          setShowRightGradient(!entry.isIntersecting);
+        }
+      });
+    }, options);
+
+    // Observe first and last cards
+    const container = scrollContainerRef.current;
+    if (container) {
+      const firstCard = container.querySelector('[data-card-position="first"]');
+      const lastCard = container.querySelector('[data-card-position="last"]');
+
+      if (firstCard) observer.observe(firstCard);
+      if (lastCard) observer.observe(lastCard);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const isMobile = useMemo(() => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -115,10 +163,10 @@ const Legacy = ({ id }: LegacyProps) => {
   return (
     <section id={id}>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <Chip variant="bordered" size="sm">
+        <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Our Legacy
-        </Chip>
-        <div className="inline-block max-w-2xl text-center justify-center animate-blur">
+        </div>
+        <BlurDiv className="inline-block max-w-2xl text-center justify-center">
           <span
             className={title({
               size: "md",
@@ -130,29 +178,67 @@ const Legacy = ({ id }: LegacyProps) => {
             30+ Years&nbsp;
           </span>
           <span className={title({ size: "md" })}>
-            of Outdoor Impact, Now Driving Digial&nbsp;
+            of Outdoor Impact, Now Driving Digital&nbsp;
           </span>
           <span className={title({ size: "md" })}>success</span>
           <div className={subtitle({ class: "mt-4" })}>
             From streets to screens, we've built brand visibility for 30+ years.
             Explore our legacy in outdoor advertising before we take it digital.
           </div>
-        </div>
+        </BlurDiv>
       </div>
-      <div className="w-full overflow-hidden">
-        <motion.div
-          initial={{ x: "-100%" }}
-          whileInView={{ x: "0%" }}
-          transition={{
-            duration: isMobile ? 10 : 20,
-            repeat: Infinity,
-            ease: "linear",
-            repeatType: "loop",
-          }}
-          viewport={{ once: false, amount: "some" }}
-          className="flex justify-center "
+      <div className="w-full overflow-hidden relative">
+        <div
+          className={`absolute flex justify-center items-center left-0 top-0 bottom-0 md:w-32 w-20 z-50 bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
+            showLeftGradient ? "opacity-100" : "opacity-0"
+          }`}
         >
-          <div className="flex items-center gap-16 px-4">
+          <div className="flex justify-start items-center h-full">
+            <Button
+              variant="solid"
+              className="bg-[#FF4533] z-50"
+              isIconOnly
+              onClick={() => {
+                scrollContainerRef.current?.scrollBy({
+                  left: -416, // 396px (card width) + 16px (gap)
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Image
+                src={RightChevron}
+                alt="Left Arrow"
+                className="rotate-180"
+              />
+            </Button>
+          </div>
+        </div>
+        <div
+          className={`absolute right-0 top-0 bottom-0 md:w-32 w-20 z-50 bg-gradient-to-l from-background to-transparent transition-opacity duration-300 ${
+            showRightGradient ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div className="flex justify-center items-center h-full">
+            <Button
+              variant="solid"
+              className="bg-[#FF4533] z-50 "
+              isIconOnly
+              onPress={() => {
+                scrollContainerRef.current?.scrollBy({
+                  left: 416, // 396px (card width) + 16px (gap)
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Image src={RightChevron} alt="Right Arrow" />
+            </Button>
+          </div>
+        </div>
+        <motion.div className="flex justify-center">
+          <div
+            ref={scrollContainerRef}
+            className="flex items-center gap-8 px-4 overflow-x-auto scrollbar-hide scroll-snap-type-x mandatory"
+          >
             {Legacies.map((legacy) => (
               <LegacyCard key={legacy.title} {...legacy} />
             ))}
@@ -160,26 +246,28 @@ const Legacy = ({ id }: LegacyProps) => {
         </motion.div>
       </div>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
-        <div className="inline-block max-w-4xl text-center justify-center animate-blur">
-          <span className={title({ size: "xs", italic: true, bold: false })}>
+        <BlurDiv className="inline-block max-w-4xl text-center justify-center">
+          <span className={title({ size: "sm", italic: true, bold: false })}>
             At The Link Publicity, we focus on delivering real results.
           </span>
-          <span className={title({ size: "xs" })}>
+          <br />
+          <span className={title({ size: "sm" })}>
             Our goal is simple - to help your brand grow through effective
             digital marketing. From paid ads to social media, we make sure your
             brand gets noticed and reaches its full potential
           </span>
-        </div>
+        </BlurDiv>
+
         <Link
           isExternal
           className={buttonStyles({
-            color: "warning",
+            className: "bg-[#FF4533] mt-8",
             radius: "lg",
             variant: "shadow",
           })}
           href={siteConfig.links.docs}
         >
-          Get your free, digital presence audit
+          Get your Free Audit Today <img src={RightArrow} alt="Right Arrow" />
         </Link>
       </div>
     </section>

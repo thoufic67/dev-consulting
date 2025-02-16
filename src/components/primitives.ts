@@ -1,11 +1,11 @@
 import { tv } from "tailwind-variants";
 
 export const title = tv({
-  base: "tracking-normal  inline font-semibold",
+  base: "inline tracking-tighter font-normal font-grotesk",
   variants: {
     color: {
-      violet: "from-[#FF1CF7] to-[#b249f8]",
-      yellow: "from-[#FF705B] to-[#FFB457]",
+      violet: "from-[#5C2BD3] to-[#00FEEB]",
+      yellow: "from-[#FFFF3B] to-[#F32A14]",
       blue: "from-[#5EA2EF] to-[#0072F5]",
       cyan: "from-[#00b7fa] to-[#01cfea]",
       green: "from-[#6FEE8D] to-[#17c964]",
@@ -43,19 +43,26 @@ export const title = tv({
         "pink",
         "foreground",
       ],
-      class: "bg-clip-text text-transparent bg-gradient-to-b",
+      class: "bg-clip-text text-transparent bg-gradient-to-r",
     },
   ],
 });
 
 export const subtitle = tv({
-  base: "w-full md:w-1/2 my-2 text-lg lg:text-xl text-default-400 block max-w-full",
+  base: " w-full md:w-1/2 my-2 text-lg lg:text-xl text-default-800/50 block max-w-full",
   variants: {
     fullWidth: {
       true: "!w-full",
     },
+    size: {
+      xs: "text-sm lg:text-base",
+      sm: "text-base lg:text-lg",
+      md: "text-lg lg:text-xl",
+      lg: "text-xl lg:text-2xl",
+    },
   },
   defaultVariants: {
     fullWidth: true,
+    size: "sm",
   },
 });

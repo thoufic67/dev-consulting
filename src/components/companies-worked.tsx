@@ -11,6 +11,9 @@ import Vodafone from "@/assets/companies/Vodafone.png";
 import Poorvika from "@/assets/companies/Poorvika.png";
 import Lynk from "@/assets/companies/Lynk.png";
 import { Image } from "@heroui/image";
+import { motion } from "framer-motion";
+import BlurDiv from "./blur-div";
+
 const companies = [
   {
     name: "Kamai",
@@ -61,26 +64,41 @@ const companies = [
 const CompaniesWorked = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <Chip variant="bordered" size="sm">
+      <div className="text-sm text-default-500/80 rounded-xl">
         Trusted by Leading Brands
-      </Chip>
-      <div className="w-full overflow-hidden ">
-        <div className="flex justify-center animate-fast-scroll sm:animate-scroll hover:animate-none focus-within:animate-none focus-within:overflow-x-auto">
+      </div>
+      <BlurDiv className="w-full overflow-hidden">
+        <motion.div
+          className="flex justify-center focus-within:overflow-x-auto"
+          initial={{ x: 0 }}
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{
+            duration: 15,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+        >
           <div className="flex items-center gap-16 px-[calc(50vw-192px)]">
-            {companies.map((company) => (
-              <div className="flex flex-col items-center justify-center">
+            {companies.map((company, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center justify-center"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
+                  draggable={false}
                   loading="lazy"
                   src={company.image}
                   alt={company.name}
                   radius="none"
                   className="h-32 min-w-32 object-contain"
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </BlurDiv>
     </div>
   );
 };

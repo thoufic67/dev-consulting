@@ -1,6 +1,7 @@
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
 import { Suspense, lazy, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
@@ -8,13 +9,15 @@ import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
 import { Button } from "@heroui/button";
-import GradiantCircle from "@/components/gradiant-circle";
+import FooterBlur from "@/assets/background/FooterBlur.png";
 import { useLocation } from "react-router-dom";
+import RightArrow from "@/assets/icons/RightArrow.png";
+import BlurDiv from "@/components/blur-div";
 
 // Lazy load components
 const CompaniesWorked = lazy(() => import("@/components/companies-worked"));
 const Legacy = lazy(() => import("@/components/legacy"));
-const HowWeHelp = lazy(() => import("@/components/how-we-help"));
+const HowWeHelp = lazy(() => import("@/components/services"));
 const MarketingPartner = lazy(() => import("@/components/marketing-partner"));
 const Comparision = lazy(() => import("@/components/comparision"));
 const Process = lazy(() => import("@/components/process"));
@@ -24,16 +27,10 @@ export default function IndexPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const validSections = [
-      "comparison",
-      "about",
-      "companies",
-      "help",
-      "process",
-    ];
+    const validSections = siteConfig.navItems.map((item) => item.href);
     const hash = locationHash.replace("#", "");
 
-    if (validSections.includes(hash)) {
+    if (validSections.includes(locationHash)) {
       const element = document.getElementById(hash);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -46,30 +43,28 @@ export default function IndexPage() {
   return (
     <DefaultLayout>
       <section
-        className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-72"
+        className="relative flex flex-col items-center justify-center gap-4 py-8 md:py-[20dvh]"
         ref={sectionRef}
       >
-        <div className="inline-block max-w-2xl text-center justify-center animate-blur">
-          <span className={title()}>Is Your Digital Presence&nbsp;</span>
-          <span
-            className={title({ color: "violet", italic: true, bold: false })}
-          >
-            Holding You Back?&nbsp;
+        <BlurDiv className="inline-block max-w-3xl text-center justify-center">
+          <span className={title({ size: "lg" })}>
+            Is Your Digital Presence Holding You Back?{" "}
+            <span className={title({ size: "lg", italic: true })}>
+              Let's fix that.
+            </span>
           </span>
-          <br />
-          <span className={title()}>Let's fix that</span>
-          <div className={subtitle({ class: "mt-4" })}>
+          <div className={subtitle({ class: "mt-4 ", size: "xs" })}>
             We analyze your website, social media, SEO, and competitor
             performance to uncover gaps and opportunities. Get a detailed audit
             and a clear roadmap to elevate your digital presence.
           </div>
-        </div>
+        </BlurDiv>
 
-        <div className="flex gap-3">
+        <BlurDiv className="flex gap-3">
           <Link
             isExternal
             className={buttonStyles({
-              color: "warning",
+              className: "bg-[#FF4533]",
               radius: "lg",
               variant: "shadow",
             })}
@@ -77,7 +72,7 @@ export default function IndexPage() {
           >
             Get your free, digital presence audit
           </Link>
-        </div>
+        </BlurDiv>
 
         {/* <div className="h-64 overflow-hidden blur-3xl -z-10">
           <div className="w-full h-full">
@@ -89,16 +84,13 @@ export default function IndexPage() {
       <Suspense fallback={<div className="min-h-[400px]" />}>
         <CompaniesWorked />
         <Legacy id="about" />
-        <HowWeHelp id="help" />
+        <HowWeHelp id="services" />
         <MarketingPartner />
         <Comparision id="comparison" />
         <Process id="process" />
       </Suspense>
 
-      <Card
-        isBlurred
-        className="border-1 border-default-100 justify-center p-8 bg-default-100/10"
-      >
+      <Card className="border-1 border-default-100 justify-center p-8 bg-default-100/10 backdrop-blur-3xl brightness-80">
         <CardHeader className="flex flex-col items-center justify-center text-center">
           <div className="flex flex-col items-center justify-center  max-w-lg">
             <span className={title({ size: "md" })}>
@@ -118,16 +110,18 @@ export default function IndexPage() {
             isExternal
             href={siteConfig.links.docs}
             variant="solid"
-            color="warning"
+            className="bg-[#FF4533]"
           >
-            Get your free, digital presence audit
+            Get your Free Audit Today <img src={RightArrow} alt="Right Arrow" />
           </Button>
         </CardFooter>
       </Card>
 
-      <div className="w-full absolute -bottom-[5%] left-[40%] -z-10 blur-[100px]">
-        <GradiantCircle />
-      </div>
+      <img
+        src={FooterBlur}
+        alt="Footer Blur"
+        className="w-[50rem] object-cover absolute -bottom-80 right-40 -z-10"
+      />
     </DefaultLayout>
   );
 }

@@ -1,8 +1,12 @@
 import { subtitle } from "./primitives";
-import { Chip } from "@heroui/chip";
 import { title } from "./primitives";
 import { Card, CardBody, CardHeader } from "@heroui/card";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion, useAnimationControls } from "framer-motion";
+import BlurDiv from "./blur-div";
+import { Button } from "@heroui/button";
+import { Image } from "@heroui/image";
+import RightChevron from "@/assets/icons/RightChevron.png";
 
 const MarketingPartnerCard = ({
   Mtitle,
@@ -16,7 +20,7 @@ const MarketingPartnerCard = ({
   return (
     <Card
       isBlurred
-      className="w-96 border-1 border-default-100 bg-default-100/10 p-4"
+      className="w-96 h-[29rem] border-1 border-default-100 bg-default-100/10 p-4"
     >
       <CardHeader className="flex flex-col items-center justify-center">
         <iframe
@@ -32,7 +36,7 @@ const MarketingPartnerCard = ({
         ></iframe>
       </CardHeader>
 
-      <CardBody className="flex flex-col items-center justify-center">
+      <CardBody className="flex flex-col items-center justify-start">
         <div className="flex flex-col ">
           <span className="text-xl font-bold">{Mtitle}</span>
           <span className="text-sm text-default-500 mt-4">{Msubtitle}</span>
@@ -83,14 +87,90 @@ const MarketingPartners = [
 
 const MarketingPartner = () => {
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimationControls();
+  const [showLeftGradient, setShowLeftGradient] = useState(false);
+  const [showRightGradient, setShowRightGradient] = useState(true);
+
+  useEffect(() => {
+    const options = {
+      root: scrollContainerRef.current,
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const position = (entry.target as HTMLElement).dataset.cardPosition;
+
+        if (position === "first") {
+          setShowLeftGradient(!entry.isIntersecting);
+        } else if (position === "last") {
+          setShowRightGradient(!entry.isIntersecting);
+        }
+      });
+    }, options);
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      const firstCard = container.querySelector('[data-card-position="first"]');
+      const lastCard = container.querySelector('[data-card-position="last"]');
+
+      if (firstCard) observer.observe(firstCard);
+      if (lastCard) observer.observe(lastCard);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const startAnimation = async () => {
+      if (scrollContainerRef.current && !isAnimationPaused) {
+        const scrollWidth = scrollContainerRef.current.scrollWidth;
+        const containerWidth = scrollContainerRef.current.offsetWidth;
+
+        await controls.start({
+          x: -(scrollWidth - containerWidth),
+          transition: {
+            duration: 20,
+            ease: "linear",
+            repeat: Infinity,
+          },
+        });
+      }
+    };
+
+    startAnimation();
+  }, [isAnimationPaused, controls]);
+
+  const handleInteractionStart = () => {
+    setIsAnimationPaused(true);
+    controls.stop();
+  };
+
+  const handleInteractionEnd = () => {
+    setIsAnimationPaused(false);
+    if (scrollContainerRef.current) {
+      controls.start({
+        x: -(
+          scrollContainerRef.current.scrollWidth -
+          scrollContainerRef.current.offsetWidth
+        ),
+        transition: {
+          duration: 20,
+          ease: "linear",
+          repeat: Infinity,
+        },
+      });
+    }
+  };
 
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <Chip variant="bordered" size="sm">
+        <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Your One-Stop Marketing Partner
-        </Chip>
-        <div className="inline-block max-w-2xl text-center justify-center animate-blur">
+        </div>
+        <BlurDiv className="inline-block max-w-4xl text-center justify-center">
           <span
             className={title({
               size: "md",
@@ -112,17 +192,78 @@ const MarketingPartner = () => {
             videos we've helped produce, capturing attention and driving
             engagement.
           </div>
-        </div>
+        </BlurDiv>
       </div>
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-hidden relative">
         <div
-          className={`flex justify-center animate-fast-scroll sm:animate-scroll hover:animate-none focus-within:animate-none focus-within:overflow-x-auto`}
+          className={`absolute flex justify-center items-center left-0 top-0 bottom-0 md:w-32 w-20 z-50 bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
+            showLeftGradient ? "opacity-100" : "opacity-0"
+          }`}
         >
-          <div className="flex items-center gap-16 px-[calc(50vw-192px)]">
-            {MarketingPartners.map((partner) => (
-              <MarketingPartnerCard key={partner.Mtitle} {...partner} />
-            ))}
+          <div className="flex justify-start items-center h-full">
+            <Button
+              variant="solid"
+              className="bg-[#FF4533] z-50"
+              isIconOnly
+              onClick={() => {
+                scrollContainerRef.current?.scrollBy({
+                  left: -416,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Image
+                src={RightChevron}
+                alt="Left Arrow"
+                className="rotate-180"
+              />
+            </Button>
           </div>
+        </div>
+        <div
+          className={`absolute right-0 top-0 bottom-0 md:w-32 w-20 z-50 bg-gradient-to-l from-background to-transparent transition-opacity duration-300 ${
+            showRightGradient ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div className="flex justify-center items-center h-full">
+            <Button
+              variant="solid"
+              className="bg-[#FF4533] z-50"
+              isIconOnly
+              onClick={() => {
+                scrollContainerRef.current?.scrollBy({
+                  left: 416,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Image src={RightChevron} alt="Right Arrow" />
+            </Button>
+          </div>
+        </div>
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-8 px-4 overflow-x-auto scrollbar-hide scroll-snap-type-x mandatory"
+        >
+          <motion.div
+            className="flex justify-start gap-16"
+            data-card-position="container"
+          >
+            {MarketingPartners.map((partner, index) => (
+              <div
+                key={partner.Mtitle}
+                data-card-position={
+                  index === 0
+                    ? "first"
+                    : index === MarketingPartners.length - 1
+                      ? "last"
+                      : "middle"
+                }
+              >
+                <MarketingPartnerCard {...partner} />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </>
