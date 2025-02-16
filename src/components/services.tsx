@@ -22,8 +22,9 @@ const HowWeHelp = ({ id }: { id?: string }) => {
               color: "violet",
             })}
           >
-            help you?
+            help you?&nbsp;
           </span>
+
           <span className={subtitle({ fullWidth: true })}>
             We help you grow your brand with impactful outdoor advertising and
             targeted digital marketing. From vehicle branding to paid ads and
