@@ -7,18 +7,18 @@ import { siteConfig } from "@/config/site";
 import { Link } from "@heroui/link";
 
 const Contact = [
+  // {
+  //   label: "+91 9884177599",
+  //   href: "tel:+91 9884177599",
+  // },
   {
-    label: "+91 9884177599",
-    href: "tel:+91 9884177599",
+    label: "devgotmoney@gmail.com",
+    href: "mailto:devgotmoney@gmail.com",
   },
-  {
-    label: "info@linkpublicity.in",
-    href: "mailto:info@linkpublicity.in",
-  },
-  {
-    label: "17/1 A, Vallimmal Street, New Avadi Road, Kilpauk, Chennai 10",
-    href: "https://maps.app.goo.gl/H9xGwyyzQQhW24HU8",
-  },
+  // {
+  //   label: "17/1 A, Vallimmal Street, New Avadi Road, Kilpauk, Chennai 10",
+  //   href: "https://maps.app.goo.gl/H9xGwyyzQQhW24HU8",
+  // },
 ];
 
 export default function DefaultLayout({
