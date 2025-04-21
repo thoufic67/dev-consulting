@@ -166,7 +166,7 @@ const MarketingPartner = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="flex flex-col items-center justify-center gap-8 py-8 md:py-10">
         <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Your YouTube Growth Partner
         </div>
@@ -193,7 +193,7 @@ const MarketingPartner = () => {
           </div>
         </BlurDiv>
       </div>
-      <div className="w-full overflow-hidden relative">
+      <div className="w-full overflow-hidden relative py-16">
         <div
           className={`absolute flex justify-center items-center left-0 top-0 bottom-0 md:w-32 w-20 z-50 bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
             showLeftGradient ? "opacity-100" : "opacity-0"

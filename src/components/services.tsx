@@ -8,7 +8,7 @@ import BlurDiv from "./blur-div";
 const HowWeHelp = ({ id }: { id?: string }) => {
   return (
     <section id={id}>
-      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
+      <div className="flex flex-col items-center justify-center gap-16 py-8 md:py-10 mt-16">
         <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Services
         </div>
@@ -38,7 +38,7 @@ const HowWeHelp = ({ id }: { id?: string }) => {
             <img
               src={StrategyPlanning}
               alt="Strategy Planning"
-              className="w-full h-full object-cover absolute top-0 left-0"
+              className="w-full h-full object-cover absolute top-0 left-0 blur-lg"
             />
             <CardHeader className="pb-2 justify-center items-center">
               <h2 className="text-3xl font-bold text-center">
@@ -59,7 +59,7 @@ const HowWeHelp = ({ id }: { id?: string }) => {
             <img
               src={VideoAnalysis}
               alt="Video Analysis"
-              className="w-full h-full object-cover absolute top-0 left-0"
+              className="w-full h-full object-cover absolute top-0 left-0 blur-lg"
             />
             <CardHeader className="pb-2 justify-center items-center">
               <h2 className="text-3xl font-bold text-center ">
@@ -80,7 +80,7 @@ const HowWeHelp = ({ id }: { id?: string }) => {
             <img
               src={CoachingSupport}
               alt="Coaching Support"
-              className="w-full h-full object-cover absolute top-0 left-0 blur-sm"
+              className="w-full h-full object-cover absolute top-0 left-0 blur-lg"
             />
 
             <div className=" absolute -bottom-10 -left-10 w-40 h-40 blur-[100px] rounded-full  bg-gradient-to-br from-red-600 to-green-600 text-white p-8" />

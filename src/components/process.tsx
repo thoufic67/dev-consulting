@@ -489,7 +489,7 @@ const Process = ({ id }: { id?: string }) => {
 
   return (
     <section id={id}>
-      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="flex flex-col items-center justify-center gap-16 py-8 md:py-10">
         <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
           Process
         </div>
@@ -508,7 +508,7 @@ const Process = ({ id }: { id?: string }) => {
             skyrocket &nbsp;
           </span>
 
-          <span className={title({ size: "md" })}>your business.</span>
+          <span className={title({ size: "md" })}>your Social Media.</span>
           <div className={subtitle({ class: "mt-4" })}>
             We simplify growth with a tailored process that helps your brand
             stand out and achieve real results. From analysis to execution, we
