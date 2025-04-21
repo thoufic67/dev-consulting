@@ -20,28 +20,28 @@ const MarketingPartnerCard = ({
   return (
     <Card
       isBlurred
-      className="w-96 h-[29rem] border-1 border-default-100 bg-default-100/10 p-4"
+      className="w-96 border-1 border-default-100 bg-default-100/10"
     >
       <CardHeader className="flex flex-col items-center justify-center">
         <iframe
           loading="lazy"
-          className="rounded-lg overflow-hidden"
+          className="rounded-lg overflow-hidden w-full aspect-video"
           width="100%"
           height="100%"
           src={src}
-          title={Mtitle}
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
+          title={""}
         ></iframe>
       </CardHeader>
 
-      <CardBody className="flex flex-col items-center justify-start">
+      {/* <CardBody className="flex flex-col items-center justify-start">
         <div className="flex flex-col ">
           <span className="text-xl font-bold">{Mtitle}</span>
           <span className="text-sm text-default-500 mt-4">{Msubtitle}</span>
         </div>
-      </CardBody>
+      </CardBody> */}
     </Card>
   );
 };
@@ -51,37 +51,37 @@ const MarketingPartners = [
     Mtitle: "Tech Channel Growth Strategy",
     Msubtitle:
       "We helped a tech review channel optimize their content strategy and presentation, leading to a 200% increase in subscribers and consistent growth in views and engagement.",
-    src: "https://www.youtube.com/embed/yHa9e-bhnds",
+    src: "https://www.youtube.com/embed/mk9YhTC3CaY",
   },
   {
     Mtitle: "Cooking Content Optimization",
     Msubtitle:
       "Through strategic content planning and audience analysis, we helped a cooking channel quadruple their watch time and build a highly engaged community of food enthusiasts.",
-    src: "https://www.youtube.com/embed/oFepyHtYvfc",
+    src: "https://www.youtube.com/embed/Bfh3WL4dRA4",
   },
   {
     Mtitle: "Fitness Channel Transformation",
     Msubtitle:
       "Our comprehensive channel strategy helped a fitness creator triple their revenue through optimized content, better engagement, and strategic brand partnerships.",
-    src: "https://www.youtube.com/embed/KD4g7p2vq9s",
+    src: "https://www.youtube.com/embed/8cWIUadRltw",
   },
   {
     Mtitle: "Educational Series Success",
     Msubtitle:
       "We helped an educational content creator reach 1M+ views on their series through improved content structure, thumbnail optimization, and strategic video promotion.",
-    src: "https://www.youtube.com/embed/-iPLuzwIDfI",
+    src: "https://www.youtube.com/embed/YPvJAT7h-l8",
   },
   {
     Mtitle: "Gaming Channel Growth",
     Msubtitle:
       "Our strategies helped a gaming channel increase their membership revenue by 5x through improved community engagement and content optimization.",
-    src: "https://www.youtube.com/embed/O6-PXhMyHpw",
+    src: "https://www.youtube.com/embed/_Yt1BNwWWH8",
   },
   {
     Mtitle: "Lifestyle Content Strategy",
     Msubtitle:
       "We helped a lifestyle vlogger secure 50+ brand partnerships through strategic content planning and channel optimization, leading to significant revenue growth.",
-    src: "https://www.youtube.com/embed/xaOIiGXr1qQ",
+    src: "https://www.youtube.com/embed/ITkWNozeqmQ",
   },
 ];
 
@@ -242,7 +242,7 @@ const MarketingPartner = () => {
         </div>
         <div
           ref={scrollContainerRef}
-          className="flex gap-8 px-4 overflow-x-auto scrollbar-hide scroll-snap-type-x mandatory"
+          className="flex gap-8 p-4 overflow-x-auto scrollbar-hide scroll-snap-type-x mandatory"
         >
           <motion.div
             className="flex justify-start gap-16"

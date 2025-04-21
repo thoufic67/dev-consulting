@@ -83,7 +83,7 @@ export default function IndexPage() {
 
       <Suspense fallback={<div className="min-h-[400px]" />}>
         <CompaniesWorked />
-        <Legacy id="about" />
+        {/* <Legacy id="about" /> */}
         <HowWeHelp id="services" />
         <MarketingPartner />
         <Comparision id="comparison" />
