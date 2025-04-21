@@ -25,7 +25,7 @@
     "@heroui/progress": "^2.2.7",
     "@heroui/snippet": "2.2.10",
     "@heroui/switch": "2.2.8",
-    "@heroui/system": "2.4.6",
+    "@heroui/system": "^2.4.7",
     "@heroui/theme": "2.4.5",
     "@react-aria/visually-hidden": "3.8.12",
     "@react-types/shared": "3.26.0",
