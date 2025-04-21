@@ -83,7 +83,7 @@ const CompaniesWorked = () => {
       <div className="text-sm text-default-500/80 rounded-xl">
         Our Growing Community
       </div>
-      <BlurDiv className="w-full overflow-hidden">
+      <BlurDiv className="w-full overflow-x-auto">
         <motion.div
           className="flex justify-center focus-within:overflow-x-auto"
           initial={{ x: 0 }}
