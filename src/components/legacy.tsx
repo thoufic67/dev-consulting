@@ -29,7 +29,7 @@ interface LegacyCardProps {
 const LegacyCard = ({ title, subtitle, image, chip, id }: LegacyCardProps) => {
   return (
     <Card
-      className="min-w-72 md:min-w-96 max-w-96 scroll-snap-start border-1 border-default-500/60"
+      className="min-w-72 md:min-w-96 max-w-96 scroll-snap-start shadow-none"
       id={id}
       data-card-position={
         title === "Orbit Cables"
@@ -77,40 +77,40 @@ const LegacyCard = ({ title, subtitle, image, chip, id }: LegacyCardProps) => {
 
 const Legacies = [
   {
-    title: "Orbit Cables",
-    subtitle: "40% brand recall uplift",
+    title: "Tech Review Channel",
+    subtitle: "200% subscriber growth in 6 months",
     image: OrbitCables,
-    chip: ["20 Buses Branded", "50+ Routes Across Mumbai"],
+    chip: ["1M+ Views Generated", "50K+ New Subscribers"],
   },
   {
-    title: "Hello Switches",
-    subtitle: "100+ localities reached",
+    title: "Cooking Channel",
+    subtitle: "400% increase in watch time",
     image: HelloSwitches,
-    chip: ["Showcased at 200+ Dealer Locations"],
+    chip: ["Featured on YouTube Trending", "100K+ Engaged Community"],
   },
   {
-    title: "Lynk",
-    subtitle: "20% Increase in Calls",
+    title: "Fitness Creator",
+    subtitle: "300% revenue growth",
     image: Lynk,
-    chip: ["250+ Autos in Chennai", "35% Brand Recall"],
+    chip: ["500K+ Monthly Views", "45% Engagement Rate"],
   },
   {
-    title: "Orbit Switches",
-    subtitle: "Collaboration with Kodaikanal Police Dept.",
+    title: "Educational Content",
+    subtitle: "1M+ views on educational series",
     image: OrbitSwitches,
-    chip: ["40%+ uplift in local brand recognition"],
+    chip: ["90% Audience Retention", "200K+ Subscribers Growth"],
   },
   {
-    title: "United India Insurance",
-    subtitle: "25% Increase in Walk-In Inquiries",
+    title: "Gaming Channel",
+    subtitle: "5x growth in channel membership",
     image: UnitedIndia,
-    chip: ["20% Boost in Local Brand Awareness"],
+    chip: ["300K+ Active Members", "2M+ Monthly Watch Hours"],
   },
   {
-    title: "Royal Enfield",
-    subtitle: "30% Increase in Social Media Mentions",
+    title: "Lifestyle Vlogger",
+    subtitle: "10x increase in brand collaborations",
     image: RoyalEnfield,
-    chip: ["15% Increase in Test Rides", "40K+ Daily Impressions"],
+    chip: ["50+ Brand Partnerships", "1M+ Monthly Impressions"],
   },
 ];
 
@@ -196,7 +196,8 @@ const Legacy = ({ id }: LegacyProps) => {
           <div className="flex justify-start items-center h-full">
             <Button
               variant="solid"
-              className="bg-[#FF4533] z-50"
+              color="primary"
+              className=" z-50"
               isIconOnly
               onClick={() => {
                 scrollContainerRef.current?.scrollBy({
@@ -221,7 +222,8 @@ const Legacy = ({ id }: LegacyProps) => {
           <div className="flex justify-center items-center h-full">
             <Button
               variant="solid"
-              className="bg-[#FF4533] z-50 "
+              color="primary"
+              className="z-50 "
               isIconOnly
               onPress={() => {
                 scrollContainerRef.current?.scrollBy({
@@ -248,20 +250,22 @@ const Legacy = ({ id }: LegacyProps) => {
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-16">
         <BlurDiv className="inline-block max-w-4xl text-center justify-center">
           <span className={title({ size: "sm", italic: true, bold: false })}>
-            At The Link Publicity, we focus on delivering real results.
+            At Dev Consulting, we focus on delivering real YouTube growth.
           </span>
           <br />
           <span className={title({ size: "sm" })}>
-            Our goal is simple - to help your brand grow through effective
-            digital marketing. From paid ads to social media, we make sure your
-            brand gets noticed and reaches its full potential
+            Our goal is simple - to help your channel grow through expert
+            strategy and optimization. From content planning to audience
+            engagement, we ensure your YouTube channel reaches its full
+            potential.
           </span>
         </BlurDiv>
 
         <Link
           isExternal
           className={buttonStyles({
-            className: "bg-[#FF4533] mt-8",
+            color: "primary",
+            className: "mt-8",
             radius: "lg",
             variant: "shadow",
           })}

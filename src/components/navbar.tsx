@@ -33,16 +33,16 @@ export const Navbar = () => {
             color="foreground"
             href="/"
           >
-            <Image
+            {/* <Image
               loading="lazy"
               src={TheLinkPublicityBrandLogo}
               alt="The Link Publicity Brand Logo"
-              className="w-96 sm:w-48 rounded-lg p-1 border-box"
-            />
+              className="w-96 sm:w-48 rounded-lg p-1 border-box bg-primary-100"
+            /> */}
 
-            {/* <p className="font-bold text-inherit">
-              The<span className="font-extrabold">Link</span>Publicity
-            </p> */}
+            <p className="font-bold text-inherit">
+              <span className="font-extrabold">Dev</span>Consulting
+            </p>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-6 justify-start ml-2">
@@ -68,7 +68,7 @@ export const Navbar = () => {
             size="sm"
             href={siteConfig.links.docs}
             variant="solid"
-            className="bg-[#FF4533] text-white text-sm"
+            color="primary"
           >
             Contact us
           </Button>

@@ -35,7 +35,7 @@ module.exports = {
   darkMode: "class",
   plugins: [
     heroui({
-      defaultTheme: "dark",
+      defaultTheme: "light",
       colors: {
         primary: "#FF4533",
       },

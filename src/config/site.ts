@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "The Link Publicity",
-  description: "The Link Publicity",
+  name: "Dev Consulting",
+  description: "Dev Consulting",
   navItems: [
     // {
     //   label: "Home",

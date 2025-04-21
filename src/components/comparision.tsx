@@ -10,18 +10,18 @@ interface ComparisionProps {
 
 const ComparisonData = {
   otherAgencies: [
-    "Limited Service Offerings",
-    "One-size-fits-all strategies",
-    "Uncertain or generic results",
-    "Shorter experience in the industry",
-    "Less personalized client interaction",
+    "Generic YouTube advice",
+    "Cookie-cutter content strategies",
+    "Limited analytics and insights",
+    "Basic channel optimization",
+    "Minimal personal support",
   ],
-  linkPublicity: [
-    "Full-service marketing under one roof",
-    "Customized strategies for your brand",
-    "Proven results with measurable growth",
-    "30+ years of advertising expertise",
-    "Collaborative, flexible approach to success",
+  devConsulting: [
+    "Expert YouTube consulting services",
+    "Custom content strategy for your niche",
+    "In-depth analytics and actionable insights",
+    "Advanced channel optimization techniques",
+    "Dedicated 1:1 coaching support",
   ],
 };
 
@@ -79,12 +79,7 @@ const Comparision = ({ id }: ComparisionProps) => {
 
         <div className="max-w-xl items-center justify-center text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Image
-              src={LinkPublicityLogo}
-              alt="Link Publicity Logo"
-              width={268}
-              height={70}
-            />
+            <h3 className="text-2xl font-bold">Dev Consulting</h3>
           </div>
           <div className="relative w-[20rem] md:w-[27rem] rounded-3xl p-8 border-1 border-default-500/50 overflow-hidden">
             <div className="absolute -top-[80%] -right-[80%] w-fit h-fit -z-10 blur-3xl">
@@ -92,7 +87,7 @@ const Comparision = ({ id }: ComparisionProps) => {
                 <GradiantCircle isFullyVisible={true} />
               </div>
             </div>
-            {ComparisonData.linkPublicity.map((item) => (
+            {ComparisonData.devConsulting.map((item) => (
               <div key={item} className="flex items-center gap-3 mb-4">
                 <svg
                   width="24"

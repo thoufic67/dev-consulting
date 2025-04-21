@@ -26,22 +26,13 @@ export default function DefaultLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    console.log(setTheme);
-    if (setTheme) {
-      setTheme("dark");
-    }
-  }, [setTheme]);
-
   return (
     <div className="relative flex flex-col overflow-x-hidden  h-screen">
       <img
         loading="lazy"
         src={TopGradient}
         alt="Top gradient background"
-        className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover blur-sm"
+        className="absolute top-0 left-0 -z-10 min-w-[50vw] h-[50vh] object-cover blur-lg"
       />
       <Navbar />
       <main className=" container relative mx-auto max-w-7xl px-6 flex-grow pt-16 scroll-smooth">
@@ -49,13 +40,12 @@ export default function DefaultLayout({
       </main>
       <footer className="w-full flex flex-col sm:flex-row items-center justify-between px-8 sm:px-32 py-16 border-t-1 border-default-100 mt-32 gap-8 backdrop-blur-2xl">
         <div className="flex flex-col sm:flex-row gap-16 items-center justify-center">
-          <img src={FooterLogo} alt="Footer Logo" className="w-32" />
           <p className="max-w-md text-sm text-default-400">
-            With over 30 years of expertise, The Link Publicity has been a
-            pioneer in Outdoor Advertising, helping brands achieve maximum
-            visibility across India. Now, we're bridging the gap to the digital
-            world with cutting-edge Digital Marketing Solutions, including SEO,
-            Social Media Marketing, Paid Ads, and Content Creation.
+            Dev Consulting is a specialized YouTube consulting agency dedicated
+            to helping content creators achieve their growth goals. We combine
+            strategic planning, in-depth analytics, and personalized coaching to
+            help channels maximize their potential and build engaged communities
+            on YouTube.
           </p>
         </div>
         <div className="flex flex-row gap-16 items-center justify-center h-full">

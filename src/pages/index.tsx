@@ -48,15 +48,15 @@ export default function IndexPage() {
       >
         <BlurDiv className="inline-block max-w-3xl text-center justify-center">
           <span className={title({ size: "lg" })}>
-            Is Your Digital Presence Holding You Back?{" "}
+            Ready to Grow Your YouTube Channel?{" "}
             <span className={title({ size: "lg", italic: true })}>
-              Let's fix that.
+              Let's make it happen.
             </span>
           </span>
           <div className={subtitle({ class: "mt-4 ", size: "xs" })}>
-            We analyze your website, social media, SEO, and competitor
-            performance to uncover gaps and opportunities. Get a detailed audit
-            and a clear roadmap to elevate your digital presence.
+            We analyze your YouTube content, audience engagement, and competitor
+            performance to uncover growth opportunities. Get expert guidance and
+            a clear strategy to elevate your YouTube presence.
           </div>
         </BlurDiv>
 
@@ -64,13 +64,13 @@ export default function IndexPage() {
           <Link
             isExternal
             className={buttonStyles({
-              className: "bg-[#FF4533]",
+              color: "primary",
               radius: "lg",
               variant: "shadow",
             })}
             href={siteConfig.links.docs}
           >
-            Get your free, digital presence audit
+            Get your free YouTube channel audit
           </Link>
         </BlurDiv>
 
@@ -94,14 +94,14 @@ export default function IndexPage() {
         <CardHeader className="flex flex-col items-center justify-center text-center">
           <div className="flex flex-col items-center justify-center  max-w-lg">
             <span className={title({ size: "md" })}>
-              Ready to scale your brand to new heights?
+              Ready to take your YouTube channel to the next level?
             </span>
           </div>
         </CardHeader>
         <CardBody className="flex flex-col items-center justify-center text-center">
           <span className={subtitle({ class: "max-w-lg" })}>
-            If you want to achieve ground-breaking growth with increased sales
-            and profitability, then you're in the right place.
+            If you want to achieve breakthrough growth with increased views,
+            subscribers, and engagement, then you're in the right place.
           </span>
         </CardBody>
         <CardFooter className="flex flex-col items-center justify-center">
@@ -110,9 +110,10 @@ export default function IndexPage() {
             isExternal
             href={siteConfig.links.docs}
             variant="solid"
-            className="bg-[#FF4533]"
+            color="primary"
           >
-            Get your Free Audit Today <img src={RightArrow} alt="Right Arrow" />
+            Get your Free Channel Audit Today{" "}
+            <img src={RightArrow} alt="Right Arrow" />
           </Button>
         </CardFooter>
       </Card>

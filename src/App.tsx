@@ -39,12 +39,12 @@ function App() {
     <>
       {!isMobile && (
         <div
+          className="bg-primary"
           style={{
             position: "fixed",
             width: "15px",
             height: "15px",
             borderRadius: "50%",
-            backgroundColor: "rgb(255, 69, 51)",
             backdropFilter: "blur(10px)",
             pointerEvents: "none",
             transform: `translate(${mousePosition.x - 10}px, ${mousePosition.y - 10}px)`,

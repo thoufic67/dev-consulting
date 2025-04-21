@@ -10,11 +10,11 @@ const ThemeProps = {
 
 type Theme = typeof ThemeProps.light | typeof ThemeProps.dark;
 
-export const useTheme = (defaultTheme?: Theme) => {
+export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem(ThemeProps.key) as Theme | null;
-
-    return storedTheme || (defaultTheme ?? ThemeProps.light);
+    // return storedTheme || ThemeProps.light;
+    return ThemeProps.light;
   });
 
   const isDark = useMemo(() => {
@@ -29,7 +29,7 @@ export const useTheme = (defaultTheme?: Theme) => {
     localStorage.setItem(ThemeProps.key, theme);
     document.documentElement.classList.remove(
       ThemeProps.light,
-      ThemeProps.dark,
+      ThemeProps.dark
     );
     document.documentElement.classList.add(theme);
     setTheme(theme);

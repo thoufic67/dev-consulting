@@ -48,39 +48,39 @@ const MarketingPartnerCard = ({
 
 const MarketingPartners = [
   {
-    Mtitle: "Aesthetic Video Shots for Tea2Go",
+    Mtitle: "Tech Channel Growth Strategy",
     Msubtitle:
-      "We created visually captivating shots for Tea2Go, focusing on the beauty of their products. From the rich colors of the tea to the serene ambiance, the video highlights the brand's premium experience.",
+      "We helped a tech review channel optimize their content strategy and presentation, leading to a 200% increase in subscribers and consistent growth in views and engagement.",
     src: "https://www.youtube.com/embed/yHa9e-bhnds",
   },
   {
-    Mtitle: "Influencer Marketing for Heaven's Park",
+    Mtitle: "Cooking Content Optimization",
     Msubtitle:
-      "We boosted Heaven's Park's reach through influencer marketing and a powerful video. This campaign led to expanded brand visibility and the opening of multiple new branches.",
+      "Through strategic content planning and audience analysis, we helped a cooking channel quadruple their watch time and build a highly engaged community of food enthusiasts.",
     src: "https://www.youtube.com/embed/oFepyHtYvfc",
   },
   {
-    Mtitle: "30-Second Ad for Kamai Elevators",
+    Mtitle: "Fitness Channel Transformation",
     Msubtitle:
-      "We created a dynamic 30-second ad that showcased Kamai Elevators' reliability and innovation, elevating their brand in a competitive market. The video highlights the brand's cutting-edge solutions and customer-focused approach.",
+      "Our comprehensive channel strategy helped a fitness creator triple their revenue through optimized content, better engagement, and strategic brand partnerships.",
     src: "https://www.youtube.com/embed/KD4g7p2vq9s",
   },
   {
-    Mtitle: "Stop-Motion Magic for Tea2Go",
+    Mtitle: "Educational Series Success",
     Msubtitle:
-      "We crafted a fun and dynamic stop-motion video for Tea2Go, bringing their tea creations to life in a playful and eye-catching way. This unique approach captured the brand's creativity and energy.",
+      "We helped an educational content creator reach 1M+ views on their series through improved content structure, thumbnail optimization, and strategic video promotion.",
     src: "https://www.youtube.com/embed/-iPLuzwIDfI",
   },
   {
-    Mtitle: "Influencer-Led COVID Vaccination Awareness Campaign",
+    Mtitle: "Gaming Channel Growth",
     Msubtitle:
-      "We collaborated with a popular influencer to raise awareness about COVID-19 vaccination, encouraging people to get vaccinated through engaging and informative content. The campaign drove high engagement and helped spread a critical public health message.",
+      "Our strategies helped a gaming channel increase their membership revenue by 5x through improved community engagement and content optimization.",
     src: "https://www.youtube.com/embed/O6-PXhMyHpw",
   },
   {
-    Mtitle: "Kamai Elevators – Reliable Solutions in Motion",
+    Mtitle: "Lifestyle Content Strategy",
     Msubtitle:
-      "We produced a captivating AVC highlighting Kamai Elevators' cutting-edge technology and commitment to safety and efficiency. The video aimed to solidify Kamai's position as a leader in the elevator industry.",
+      "We helped a lifestyle vlogger secure 50+ brand partnerships through strategic content planning and channel optimization, leading to significant revenue growth.",
     src: "https://www.youtube.com/embed/xaOIiGXr1qQ",
   },
 ];
@@ -168,7 +168,7 @@ const MarketingPartner = () => {
     <>
       <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="p-2 text-sm border-1 border-default-500/60 rounded-xl">
-          Your One-Stop Marketing Partner
+          Your YouTube Growth Partner
         </div>
         <BlurDiv className="inline-block max-w-4xl text-center justify-center">
           <span
@@ -179,18 +179,17 @@ const MarketingPartner = () => {
               bold: false,
             })}
           >
-            Video Production&nbsp;
+            Channel Growth&nbsp;
           </span>
           <span className={title({ size: "md" })}>
-            That Drives Your Brand's Story&nbsp;
+            That Drives Real Results&nbsp;
           </span>
           <br />
 
           <div className={subtitle({ class: "mt-4" })}>
-            From concept to creation, we bring your brand's story to life
-            through high-quality video content. Here are some of the YouTube
-            videos we've helped produce, capturing attention and driving
-            engagement.
+            From strategy to execution, we help YouTubers achieve their growth
+            goals. Here are some of the channels we've helped transform,
+            delivering measurable results and sustainable growth.
           </div>
         </BlurDiv>
       </div>
@@ -203,7 +202,7 @@ const MarketingPartner = () => {
           <div className="flex justify-start items-center h-full">
             <Button
               variant="solid"
-              className="bg-[#FF4533] z-50"
+              color="primary"
               isIconOnly
               onClick={() => {
                 scrollContainerRef.current?.scrollBy({
@@ -228,7 +227,7 @@ const MarketingPartner = () => {
           <div className="flex justify-center items-center h-full">
             <Button
               variant="solid"
-              className="bg-[#FF4533] z-50"
+              color="primary"
               isIconOnly
               onClick={() => {
                 scrollContainerRef.current?.scrollBy({

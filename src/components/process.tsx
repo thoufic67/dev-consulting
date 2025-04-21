@@ -19,7 +19,7 @@ const ProcessCard = ({
 }: ProcessCard) => {
   return (
     <div className="flex flex-col items-center text-center max-w-sm p-6">
-      <div className="mb-4 text-4xl">{icon}</div>
+      <div className="mb-4 text-4xl bg-default-100 rounded-lg p-4">{icon}</div>
       <h3 className="text-xl">{ProcessTitle}</h3>
       <p className="mt-2 text-default-500">{ProcessDescription}</p>
     </div>
