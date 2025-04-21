@@ -83,9 +83,9 @@ const CompaniesWorked = () => {
       <div className="text-sm text-default-500/80 rounded-xl">
         Our Growing Community
       </div>
-      <BlurDiv className="w-full overflow-x-auto">
+      <BlurDiv className="w-full overflow-x-auto scrollbar-hide">
         <motion.div
-          className="flex justify-center focus-within:overflow-x-auto"
+          className="w-full flex justify-center focus-within:overflow-x-auto"
           initial={{ x: 0 }}
           transition={{
             duration: 15,
@@ -93,7 +93,7 @@ const CompaniesWorked = () => {
             repeat: Infinity,
           }}
         >
-          <div className="flex items-center gap-16 px-[calc(50vw-192px)] p-4">
+          <div className="flex items-center gap-16 p-4">
             {socialChannels.map((channel, index) => (
               <Link
                 key={index}
