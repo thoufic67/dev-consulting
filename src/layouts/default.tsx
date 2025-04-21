@@ -70,7 +70,7 @@ export default function DefaultLayout({
               Get a free audit
             </Link>
           </div>
-          <div className="flex flex-col gap-2 h-full justify-between">
+          {/* <div className="flex flex-col gap-2 h-full justify-between">
             <p className="text-sm">Contact</p>
             {Contact.map((item) => (
               <Link
@@ -81,7 +81,7 @@ export default function DefaultLayout({
                 {item.label}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </footer>
     </div>
